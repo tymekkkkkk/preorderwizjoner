@@ -24,10 +24,73 @@
             color: white; 
             font-family: 'Inter', sans-serif; 
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow: hidden; /* Zablokowane przewijanie na starcie */
         }
 
-        /* Animowane tło w formie delikatnego pulsu */
+        /* --- INTRO OVERLAY --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        #intro-overlay img {
+            width: 100%;
+            max-width: 600px; /* Dopasuj rozmiar GIF-a */
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .enter-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 15px 40px;
+            font-family: 'Syncopate', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .enter-btn:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        /* Klasa usuwająca intro */
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- RESZTA STRONY --- */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            opacity: 0; /* Ukryte na starcie */
+            transform: scale(0.98);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .wrapper.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         body::after {
             content: "";
             position: fixed;
@@ -44,12 +107,6 @@
             to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
         }
 
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -58,7 +115,6 @@
             margin-bottom: 120px;
         }
 
-        /* Animacja okładki - "Floating" */
         .cover-art {
             position: sticky;
             top: 60px;
@@ -129,7 +185,6 @@
             background: var(--accent);
         }
 
-        /* Przycisk z efektem glitch/shimmer */
         .buy-btn {
             display: block;
             width: 100%;
@@ -151,20 +206,6 @@
             letter-spacing: 5px;
         }
 
-        .buy-btn::after {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            transition: 0.5s;
-        }
-
-        .buy-btn:hover::after {
-            left: 100%;
-        }
-
-        /* Tracklista z hover effect */
         .track-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -197,7 +238,12 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div id="intro-overlay">
+    <img src="giphy.gif" alt="WIZJONER Intro">
+    <button class="enter-btn" onclick="startExperience()">KLIKNIJ ABY ZAMÓWIĆ</button>
+</div>
+
+<div class="wrapper" id="main-content">
     <div class="hero">
         <div class="cover-art" data-aos="fade-right" data-aos-duration="1200">
             <img src="okladkaNates.png" alt="WIZJONER Cover">
@@ -225,33 +271,45 @@
     <section class="tracklist-container" data-aos="fade-up">
         <h2 style="font-family: 'Syncopate'; margin-bottom: 40px; font-size: 0.9rem; letter-spacing: 5px; color: var(--muted);">TRACKLISTA</h2>
         <div class="track-grid">
-            <div class="track-item" data-aos="fade-up" data-aos-delay="50"><span>01. WIZ3ONER!</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="100"><span>02. Everest</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="150"><span>03. Kawałek serca</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="200"><span>04. Emocje Zamknięte na Klucz</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="250"><span>05. Teraz tańcz <span class="feat">feat. Kuba Bukłaha</span></span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="300"><span>06. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="350"><span>07. Motyle na niebie</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="400"><span>08. MIASTO DUCHÓW <span class="feat">feat. Nika</span></span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="450"><span>09. Zatonąć sam</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="500"><span>10. gdzie teraz jesteś? (skit)</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="550"><span>11. Penthouse <span class="feat">feat. Lixsoon</span></span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="600"><span>12. metanoia</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="650"><span>13. Co dwóch to nie jeden</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="700"><span>14. DALEKO OD DOMU PREV</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="750"><span>15. Pamiętnik</span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="800"><span>16. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
-            <div class="track-item" data-aos="fade-up" data-aos-delay="850"><span>17. Planet3rium <span class="feat">feat. Nikola Ziomek, Xeon</span></span></div>
+            <div class="track-item"><span>01. WIZ3ONER!</span></div>
+            <div class="track-item"><span>02. Everest</span></div>
+            <div class="track-item"><span>03. Kawałek serca</span></div>
+            <div class="track-item"><span>04. Emocje Zamknięte na Klucz</span></div>
+            <div class="track-item"><span>05. Teraz tańcz <span class="feat">feat. Kuba Bukłaha</span></span></div>
+            <div class="track-item"><span>06. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
+            <div class="track-item"><span>07. Motyle na niebie</span></div>
+            <div class="track-item"><span>08. MIASTO DUCHÓW <span class="feat">feat. Nika</span></span></div>
+            <div class="track-item"><span>09. Zatonąć sam</span></div>
+            <div class="track-item"><span>10. gdzie teraz jesteś? (skit)</span></div>
+            <div class="track-item"><span>11. Penthouse <span class="feat">feat. Lixsoon</span></span></div>
+            <div class="track-item"><span>12. metanoia</span></div>
+            <div class="track-item"><span>13. Co dwóch to nie jeden</span></div>
+            <div class="track-item"><span>14. DALEKO OD DOMU PREV</span></div>
+            <div class="track-item"><span>15. Pamiętnik</span></div>
+            <div class="track-item"><span>16. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+            <div class="track-item"><span>17. Planet3rium <span class="feat">feat. Nikola Ziomek, Xeon</span></span></div>
         </div>
     </section>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    once: true, // animacja tylko raz przy przewijaniu
-    mirror: false
-  });
+    function startExperience() {
+        // Ukryj intro
+        const intro = document.getElementById('intro-overlay');
+        intro.classList.add('fade-out');
+
+        // Odblokuj scroll i pokaż treść
+        document.body.style.overflow = 'auto';
+        const content = document.getElementById('main-content');
+        content.classList.add('show');
+
+        // Zainicjuj AOS po kliknięciu, aby animacje ruszyły w odpowiednim momencie
+        AOS.init({
+            once: true,
+            mirror: false
+        });
+    }
 </script>
 
 </body>
