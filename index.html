@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIZJONER - Preorder | Nates</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #ffffff;
+            --muted: #666;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glow: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animowane tło w formie delikatnego pulsu */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 50%; left: 50%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            animation: pulseBg 10s infinite alternate;
+        }
+
+        @keyframes pulseBg {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            to { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        /* Animacja okładki - "Floating" */
+        .cover-art {
+            position: sticky;
+            top: 60px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .cover-art img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px var(--glow);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cover-art img:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            letter-spacing: -4px;
+            line-height: 0.8;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .preorder-tag {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 6px 18px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .preorder-info {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 40px;
+            border-radius: 4px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .preorder-list li {
+            list-style: none;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-weight: 300;
+            color: #ddd;
+        }
+
+        .preorder-list li::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 50%;
+            width: 6px; height: 1px;
+            background: var(--accent);
+        }
+
+        /* Przycisk z efektem glitch/shimmer */
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 25px;
+            background: white;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-btn:hover {
+            background: #f0f0f0;
+            letter-spacing: 5px;
+        }
+
+        .buy-btn::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: 0.5s;
+        }
+
+        .buy-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Tracklista z hover effect */
+        .track-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 60px;
+        }
+
+        .track-item {
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .track-item:hover {
+            background: rgba(255,255,255,0.05);
+            padding-left: 20px;
+            border-bottom-color: var(--accent);
+        }
+
+        .feat { color: var(--muted); font-size: 0.75rem; margin-left: 8px; }
+
+        @media (max-width: 850px) {
+            .hero { grid-template-columns: 1fr; gap: 40px; }
+            .track-grid { grid-template-columns: 1fr; }
+            .cover-art { position: static; animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="hero">
+        <div class="cover-art" data-aos="fade-right" data-aos-duration="1200">
+            <img src="okladkaNates.jpg" alt="WIZJONER Cover">
+        </div>
+        
+        <div class="content" data-aos="fade-left" data-aos-duration="1200">
+            <span class="preorder-tag">LIMITED PREORDER</span>
+            <h1 data-aos="zoom-in-right" data-aos-delay="300">WIZJO<br>NER</h1>
+            <p style="color: #777; letter-spacing: 8px; font-weight: 300; margin-bottom: 20px;">NateS</p>
+            
+            <div class="preorder-info">
+                <ul class="preorder-list">
+                    <li>Kolekcjonerskie wydanie Digipack</li>
+                    <li>Sygnowany arkusz "WIZJONER"</li>
+                    <li>Zestaw 5 holograficznych wlepek</li>
+                    <li>Dostęp do ukrytego utworu via QR</li>
+                </ul>
+            </div>
+
+            <p style="font-size: 2rem; font-weight: 900; margin-bottom: 30px;">89.99 PLN</p>
+            <a href="#" class="buy-btn">Zamów preorder</a>
+        </div>
+    </div>
+
+    <section class="tracklist-container" data-aos="fade-up">
+        <h2 style="font-family: 'Syncopate'; margin-bottom: 40px; font-size: 0.9rem; letter-spacing: 5px; color: var(--muted);">MANIFEST / TRACKLISTA</h2>
+        <div class="track-grid">
+            <div class="track-item" data-aos="fade-up" data-aos-delay="50"><span>01. WIZ3ONER!</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="100"><span>02. Everest</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="150"><span>03. Kawałek serca</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="200"><span>04. Emocje Zamknięte na Klucz</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="250"><span>05. Teraz tańcz <span class="feat">feat. Kuba Bukłaha</span></span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="300"><span>06. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="350"><span>07. Motyle na niebie</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="400"><span>08. MIASTO DUCHÓW <span class="feat">feat. Nika</span></span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="450"><span>09. Zatonąć sam</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="500"><span>10. gdzie teraz jesteś? (skit)</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="550"><span>11. Penthouse <span class="feat">feat. Lixsoon</span></span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="600"><span>12. metanoia</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="650"><span>13. Co dwóch to nie jeden</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="700"><span>14. DALEKO OD DOMU PREV</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="750"><span>15. Pamiętnik</span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="800"><span>16. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+            <div class="track-item" data-aos="fade-up" data-aos-delay="850"><span>17. Planet3rium <span class="feat">feat. Nikola Ziomek, Xeon</span></span></div>
+        </div>
+    </section>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: true, // animacja tylko raz przy przewijaniu
+    mirror: false
+  });
+</script>
+
+</body>
+</html>
