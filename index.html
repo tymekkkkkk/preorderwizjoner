@@ -117,10 +117,30 @@
         }
         .buy-btn:hover { background: #f0f0f0; letter-spacing: 5px; }
 
+        /* --- TRACKLISTA STYLE --- */
         .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 60px; }
-        .track-item { padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; }
+        
+        .track-item { 
+            padding: 15px 15px; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            display: flex; 
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-left: 0px solid white;
+            cursor: default;
+        }
+
+        /* NOWE: Efekt podświetlenia po najechaniu */
+        .track-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-left: 4px solid white;
+            padding-left: 25px;
+            color: #fff;
+        }
+
         .track-item.bonus { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 20px; color: #fff; }
-        .feat { color: var(--muted); font-size: 0.75rem; margin-left: 8px; }
+        .feat { color: var(--muted); font-size: 0.75rem; margin-left: 8px; transition: 0.3s; }
+        .track-item:hover .feat { color: #aaa; }
 
         @media (max-width: 850px) {
             .hero { grid-template-columns: 1fr; }
@@ -232,7 +252,9 @@
         document.getElementById('intro-overlay').classList.add('fade-out');
         document.body.style.overflow = 'auto';
         document.getElementById('main-content').classList.add('show');
-        AOS.init({ once: true });
+        setTimeout(() => {
+            AOS.init({ once: true });
+        }, 100);
     }
 
     function toggleForm() {
