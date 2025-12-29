@@ -56,7 +56,7 @@
             background: rgba(0,0,0,0.9);
             backdrop-filter: blur(15px);
             z-index: 10000;
-            display: none; /* Ukryty domyślnie */
+            display: none; 
             justify-content: center;
             align-items: center;
             overflow-y: auto;
@@ -119,6 +119,7 @@
 
         .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 60px; }
         .track-item { padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; }
+        .track-item.bonus { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 20px; color: #fff; }
         .feat { color: var(--muted); font-size: 0.75rem; margin-left: 8px; }
 
         @media (max-width: 850px) {
@@ -204,7 +205,7 @@
             <div class="track-item"><span>05. Teraz tańcz <span class="feat">feat. Kuba Bukłaha</span></span></div>
             <div class="track-item"><span>06. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
             <div class="track-item"><span>07. Motyle na niebie</span></div>
-            <div class="track-item"><span>08. MIASTO DUCHÓW <span class="feat">feat. Nika</span></span></div>
+            <div class="track-item"><span>08. MIASTO DUCHÓW <span class="feat">feat. Nikola Ziomek</span></span></div>
             <div class="track-item"><span>09. Zatonąć sam</span></div>
             <div class="track-item"><span>10. gdzie teraz jesteś? (skit)</span></div>
             <div class="track-item"><span>11. Penthouse <span class="feat">feat. Lixsoon</span></span></div>
@@ -212,8 +213,15 @@
             <div class="track-item"><span>13. Co dwóch to nie jeden</span></div>
             <div class="track-item"><span>14. DALEKO OD DOMU PREV</span></div>
             <div class="track-item"><span>15. Pamiętnik</span></div>
-            <div class="track-item"><span>16. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
-            <div class="track-item"><span>17. Planet3rium <span class="feat">feat. Nikola Ziomek, Xeon</span></span></div>
+            <div class="track-item"><span>16. Planetarium <span class="feat">feat. Xeon, Nikola Ziomek</span></span></div>
+            <div class="track-item"><span>17. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <h3 style="font-family: 'Syncopate'; font-size: 0.7rem; color: var(--muted); letter-spacing: 3px; margin-bottom: 10px;">BONUS TRACK</h3>
+            <div class="track-item" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                <span>18. ???</span>
+            </div>
         </div>
     </section>
 </div>
