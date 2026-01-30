@@ -24,25 +24,27 @@
             color: white; 
             font-family: 'Inter', sans-serif; 
             line-height: 1.6;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        /* --- SUBTELNA ANIMACJA CD --- */
-        .cd-animation-container {
+        /* --- STICKY CD ANIMATION --- */
+        .cd-fixed-header {
+            position: sticky;
+            top: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-top: 20px; /* Minimalne obniżenie */
-            background: var(--bg);
+            z-index: 1000;
+            background: var(--bg); /* Tło, żeby treść nie prześwitywała pod spodem */
+            padding: 10px 0;
         }
 
-        .cd-animation-container video {
-            width: 100%;
-            max-width: 350px; /* Mniejszy rozmiar, żeby było "lekko" */
+        .cd-fixed-header video {
+            width: 180px; /* Pomniejszona płyta zgodnie ze screenem */
             height: auto;
             display: block;
-            filter: drop-shadow(0 0 0 transparent); /* Gwarancja 0 glow */
+            filter: drop-shadow(0 0 0 transparent);
         }
 
         /* --- INTRO OVERLAY --- */
@@ -111,18 +113,21 @@
             border-left: 2px solid white;
         }
 
-        /* --- RESZTA STRONY --- */
+        /* --- RESZTA STRONY (PODWYŻSZONA) --- */
         .wrapper {
-            max-width: 1200px; margin: 0 auto; padding: 20px 20px 80px 20px;
-            opacity: 0; transform: scale(0.98);
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0px 20px 80px 20px; /* Usunięty górny padding, żeby strona była wyżej */
+            opacity: 0; 
+            transform: scale(0.98);
             transition: opacity 1.5s ease, transform 1.5s ease;
         }
 
         .wrapper.show { opacity: 1; transform: scale(1); }
 
-        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 120px; }
-        .cover-art { position: sticky; top: 60px; animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(1deg); } }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
+        .cover-art { position: sticky; top: 120px; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
         .cover-art img { width: 100%; border-radius: 5px; box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px var(--glow); }
 
         h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -4px; line-height: 0.8; margin-bottom: 20px; text-transform: uppercase; }
@@ -205,14 +210,13 @@
     </div>
 </div>
 
-<div class="wrapper" id="main-content">
-    
-    <div class="cd-animation-container" data-aos="fade-down">
-        <video autoplay loop muted playsinline>
-            <source src="cd.mp4" type="video/mp4">
-        </video>
-    </div>
+<div class="cd-fixed-header">
+    <video autoplay loop muted playsinline>
+        <source src="cd.mp4" type="video/mp4">
+    </video>
+</div>
 
+<div class="wrapper" id="main-content">
     <div class="hero">
         <div class="cover-art" data-aos="fade-right">
             <img src="okladkaNates.png" alt="WIZJONER Cover">
@@ -223,7 +227,7 @@
             <h1>WIZJONER</h1>
             <p style="color: #777; letter-spacing: 8px; font-weight: 300; margin-bottom: 20px;">NateS</p>
             
-            <div style="background: var(--glass); padding: 40px; border-radius: 4px; margin: 40px 0;">
+            <div style="background: var(--glass); padding: 40px; border-radius: 4px; margin: 30px 0;">
                 <ul style="list-style: none; color: #ddd; font-weight: 300;">
                     <li style="margin-bottom: 10px;">• Kolekcjonerskie wydanie Digipack</li>
                     <li style="margin-bottom: 10px;">• Sygnowany plakat "WIZJONER"</li>
@@ -283,13 +287,8 @@
 
     function toggleForm() {
         const modal = document.getElementById('order-modal');
-        if (modal.style.display === 'flex') {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        } else {
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+        modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        document.body.style.overflow = (modal.style.display === 'flex') ? 'hidden' : 'auto';
     }
 </script>
 
