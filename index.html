@@ -27,6 +27,14 @@
             overflow: hidden;
         }
 
+        /* Styl dla animacji CD */
+        .cd-animation {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px var(--glow));
+        }
+
         /* --- INTRO OVERLAY --- */
         #intro-overlay {
             position: fixed;
@@ -130,7 +138,6 @@
             cursor: default;
         }
 
-        /* NOWE: Efekt podświetlenia po najechaniu */
         .track-item:hover {
             background: rgba(255, 255, 255, 0.07);
             border-left: 4px solid white;
@@ -197,6 +204,10 @@
         </div>
         
         <div class="content" data-aos="fade-left">
+            <video class="cd-animation" autoplay loop muted playsinline>
+                <source src="cd.mp4" type="video/mp4">
+            </video>
+
             <span class="preorder-tag">LIMITED PREORDER</span>
             <h1>WIZJONER</h1>
             <p style="color: #777; letter-spacing: 8px; font-weight: 300; margin-bottom: 20px;">NateS</p>
@@ -219,24 +230,25 @@
     <section class="tracklist-container" data-aos="fade-up">
         <h2 style="font-family: 'Syncopate'; margin-bottom: 40px; font-size: 0.9rem; letter-spacing: 5px; color: var(--muted);">TRACKLISTA</h2>
         <div class="track-grid">
-<div class="track-item"><span>01. WIZ3ONER!</span></div>
-<div class="track-item"><span>02. Everest</span></div>
-<div class="track-item"><span>03. W TRASIE</span></div>
-<div class="track-item"><span>04. Kawałek serca</span></div>
-<div class="track-item"><span>05. Emocje Zamknięte na Klucz</span></div>
-<div class="track-item"><span>06. Teraz tańcz</span></div>
-<div class="track-item"><span>07. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
-<div class="track-item"><span>08. Motyle na niebie</span></div>
-<div class="track-item"><span>09. MIASTO DUCHÓW <span class="feat">feat. Nikola Ziomek</span></span></div>
-<div class="track-item"><span>10. Zatonąć sam</span></div>
-<div class="track-item"><span>11. WIZ33</span></div>
-<div class="track-item"><span>12. Penthouse <span class="feat">feat. Lixson</span></span></div>
-<div class="track-item"><span>13. metanoia</span></div>
-<div class="track-item"><span>14. Co dwóch to nie jeden</span></div>
-<div class="track-item"><span>15. DALEKO OD DOMU PREV</span></div>
-<div class="track-item"><span>16. Pamiętnik</span></div>
-<div class="track-item"><span>17. Planet3rium <span class="feat">feat. Xeon, Nikola Ziomek</span></span></div>
-<div class="track-item"><span>18. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+            <div class="track-item"><span>01. WIZ3ONER!</span></div>
+            <div class="track-item"><span>02. Everest</span></div>
+            <div class="track-item"><span>03. W TRASIE</span></div>
+            <div class="track-item"><span>04. Kawałek serca</span></div>
+            <div class="track-item"><span>05. Emocje Zamknięte na Klucz</span></div>
+            <div class="track-item"><span>06. Teraz tańcz</span></div>
+            <div class="track-item"><span>07. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
+            <div class="track-item"><span>08. Motyle na niebie</span></div>
+            <div class="track-item"><span>09. MIASTO DUCHÓW <span class="feat">feat. Nikola Ziomek</span></span></div>
+            <div class="track-item"><span>10. Zatonąć sam</span></div>
+            <div class="track-item"><span>11. WIZ33</span></div>
+            <div class="track-item"><span>12. Penthouse <span class="feat">feat. Lixson</span></span></div>
+            <div class="track-item"><span>13. metanoia</span></div>
+            <div class="track-item"><span>14. Co dwóch to nie jeden</span></div>
+            <div class="track-item"><span>15. DALEKO OD DOMU PREV</span></div>
+            <div class="track-item"><span>16. Pamiętnik</span></div>
+            <div class="track-item"><span>17. Planet3rium <span class="feat">feat. Xeon, Nikola Ziomek</span></span></div>
+            <div class="track-item"><span>18. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+        </div>
 
         <div style="margin-top: 40px;">
             <h3 style="font-family: 'Syncopate'; font-size: 0.7rem; color: var(--muted); letter-spacing: 3px; margin-bottom: 10px;">BONUS TRACK</h3>
