@@ -12,7 +12,7 @@
         :root {
             --accent: #ffffff;
             --muted: #777;
-            --bg: #000000; /* Zmieniono na czystą czerń */
+            --bg: #000000;
             --glass: rgba(255, 255, 255, 0.03);
             --glow: rgba(255, 255, 255, 0.15);
         }
@@ -27,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* --- STICKY CD ANIMATION --- */
         .cd-fixed-header {
             position: sticky;
             top: 0;
@@ -36,7 +35,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            background: var(--bg); /* Wykorzystuje nową czystą czerń */
+            background: var(--bg);
             padding: 10px 0;
         }
 
@@ -47,11 +46,10 @@
             filter: drop-shadow(0 0 0 transparent);
         }
 
-        /* --- INTRO OVERLAY --- */
         #intro-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: #000000; /* Zmieniono na czystą czerń */
+            background: #000000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 9999;
             transition: opacity 1s ease, visibility 1s;
@@ -69,11 +67,10 @@
         .enter-btn:hover { background: white; color: black; box-shadow: 0 0 20px var(--glow); }
         .fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
 
-        /* --- FORMULARZ MODAL --- */
         #order-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); /* Zwiększone krycie dla lepszego efektu */
+            background: rgba(0,0,0,0.95);
             backdrop-filter: blur(15px);
             z-index: 10000;
             display: none; 
@@ -113,7 +110,6 @@
             border-left: 2px solid white;
         }
 
-        /* --- WRAPPER --- */
         .wrapper {
             max-width: 1200px; 
             margin: 0 auto; 
@@ -202,7 +198,7 @@
             <div class="shipping-info-box">
                 <p><strong>Dostawa:</strong> Paczkomat InPost (17.00 PLN)</p>
                 <p><strong>Płatność:</strong> Przy odbiorze (Pobranie)</p>
-                <p style="margin-top: 10px; font-size: 0.9rem;"><strong>ŁĄCZNIE: 106.99 PLN</strong></p>
+                <p style="margin-top: 10px; font-size: 0.9rem;"><strong>ŁĄCZNIE: 47.00 PLN</strong></p>
             </div>
 
             <button type="submit" class="buy-btn" style="padding: 15px;">POTWIERDZAM ZAMÓWIENIE</button>
@@ -237,7 +233,12 @@
                 </ul>
             </div>
 
-            <p style="font-size: 2rem; font-weight: 900; margin-bottom: 30px;">89.99 PLN</p>
+            <div style="margin-bottom: 30px;">
+                <span style="font-size: 1.2rem; color: #777; text-decoration: line-through; margin-right: 15px;">35.00 PLN</span>
+                <span style="font-size: 2.5rem; font-weight: 900;">30.00 PLN</span>
+                <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">+ 17.00 PLN dostawa</p>
+            </div>
+
             <button onclick="toggleForm()" class="buy-btn">Zamów preorder</button>
         </div>
     </div>
@@ -250,25 +251,26 @@
             <div class="track-item"><span>03. W TRASIE</span></div>
             <div class="track-item"><span>04. Kawałek serca</span></div>
             <div class="track-item"><span>05. Emocje Zamknięte na Klucz</span></div>
-            <div class="track-item"><span>06. Teraz tańcz</span></div>
-            <div class="track-item"><span>07. Płonie Całe Miasto <span class="feat">feat. Kalina Malina</span></span></div>
-            <div class="track-item"><span>08. Motyle na niebie</span></div>
-            <div class="track-item"><span>09. MIASTO DUCHÓW <span class="feat">feat. Nikola Ziomek</span></span></div>
-            <div class="track-item"><span>10. Zatonąć sam</span></div>
-            <div class="track-item"><span>11. WIZ33</span></div>
-            <div class="track-item"><span>12. Penthouse <span class="feat">feat. Lixson</span></span></div>
-            <div class="track-item"><span>13. metanoia</span></div>
-            <div class="track-item"><span>14. Co dwóch to nie jeden</span></div>
-            <div class="track-item"><span>15. DALEKO OD DOMU PREV</span></div>
-            <div class="track-item"><span>16. Pamiętnik</span></div>
-            <div class="track-item"><span>17. Planet3rium <span class="feat">feat. Xeon, Nikola Ziomek</span></span></div>
-            <div class="track-item"><span>18. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
+            <div class="track-item"><span>06. WAKSY CAMP (MARZENIA) <span class="feat">feat. WAKSY</span></span></div>
+            <div class="track-item"><span>07. Teraz tańcz</span></div>
+            <div class="track-item"><span>08. Płonie Całe Miasto</span></div>
+            <div class="track-item"><span>09. Motyle na niebie</span></div>
+            <div class="track-item"><span>10. MIASTO DUCHÓW <span class="feat">feat. Nikola Ziomek</span></span></div>
+            <div class="track-item"><span>11. Zatonąć sam</span></div>
+            <div class="track-item"><span>12. WIZ33</span></div>
+            <div class="track-item"><span>13. Penthouse <span class="feat">feat. Lixson</span></span></div>
+            <div class="track-item"><span>14. metanoia</span></div>
+            <div class="track-item"><span>15. Co dwóch to nie jeden</span></div>
+            <div class="track-item"><span>16. DALEKO OD DOMU PREV</span></div>
+            <div class="track-item"><span>17. Pamiętnik</span></div>
+            <div class="track-item"><span>18. Planet3rium <span class="feat">feat. Xeon, Nikola Ziomek</span></span></div>
+            <div class="track-item"><span>19. Listy i mity <span class="feat">feat. Lesser, Szost</span></span></div>
         </div>
 
         <div style="margin-top: 40px;">
             <h3 style="font-family: 'Syncopate'; font-size: 0.7rem; color: var(--muted); letter-spacing: 3px; margin-bottom: 10px;">BONUS TRACK</h3>
             <div class="track-item" style="border-top: 1px solid rgba(255,255,255,0.1);">
-                <span>19. Lùmina</span>
+                <span>20. Lùmina</span>
             </div>
         </div>
     </section>
